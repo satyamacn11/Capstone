@@ -28,14 +28,15 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Navigate to aws_infra-tf directory
-        run: cd aws_infra-tf
+      # - name: Navigate to aws_infra-tf directory
+      #   run: cd aws_infra-tf
 
       - name: Terraform Plan
-        run: terraform plan -var-file="variables/dev.tfvars" -out=tfplan
+        run: |
+          (cd aws_infra-tf && terraform plan -var-file="variables/dev.tfvars" -out=tfplan)
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
       - name: Terraform Destroy
-        run: terraform destroy -var-file="aws_infra-tf/variables/dev.tfvars" -auto-approve
+        run: terraform destroy -var-file="variables/dev.tfvars" -auto-approve
