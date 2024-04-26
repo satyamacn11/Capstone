@@ -30,6 +30,8 @@ jobs:
 
       # - name: Navigate to aws_infra-tf directory
       #   run: cd aws_infra-tf
+      - name: Terraform Init
+        run: cd aws_infra-tf && terraform init
 
       - name: Terraform Plan
         run: |
