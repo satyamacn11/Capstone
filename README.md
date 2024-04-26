@@ -1,5 +1,8 @@
 # Capstone 
 
+## Architecture
+![Arch](image.png)
+
 1. File Upload: The user uploads a CSV file through a UI, which calls an API Gateway backed by IAM role authentication.
 2. Metadata Storage: The file’s metadata is stored in DynamoDB.
 3. File Storage: The file itself is stored in an S3 bucket.
