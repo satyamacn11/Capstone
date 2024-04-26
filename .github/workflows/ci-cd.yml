@@ -17,9 +17,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Navigate to directory
-        run: |
-         cd aws_infra-tf
+      # - name: Navigate to directory
+      #   run: |
+      #    cd aws_infra-tf
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
@@ -33,10 +33,10 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -var-file="variables/dev.tfvars" -out=tfplan
+        run: terraform plan -var-file="aws_infra-tf/variables/dev.tfvars" -out=tfplan
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
       - name: Terraform Destroy
-        run: terraform destroy -var-file="variables/dev.tfvars" -auto-approve
+        run: terraform destroy -var-file="aws_infra-tf/variables/dev.tfvars" -auto-approve
