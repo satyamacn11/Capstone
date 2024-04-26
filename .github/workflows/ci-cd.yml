@@ -19,7 +19,7 @@ jobs:
 
       - name: Navigate to directory
         run: |
-         cd aws_infra_tf
+         cd aws_infra-tf
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
