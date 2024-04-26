@@ -17,9 +17,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # - name: Navigate to directory
-      #   run: |
-      #    cd aws_infra-tf
+      - name: Navigate to directory
+        run: |
+         cd aws_infra-tf
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
