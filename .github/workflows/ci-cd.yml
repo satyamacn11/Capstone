@@ -42,10 +42,12 @@ jobs:
         run: |
           (cd aws_infra-tf && terraform plan -var-file="variables/dev.tfvars" -out=tfplan)
 
-      # - name: Terraform Apply
-      #   run: |
-      #     (cd aws_infra-tf && terraform apply -auto-approve tfplan)
+      - name: Terraform Apply
+        run: |
+          (cd aws_infra-tf && terraform apply -var-file="variables/dev.tfvars" -auto-approve)
 
       - name: Terraform Destroy
         if: always()
         run:  (cd aws_infra-tf && terraform destroy -var-file="variables/dev.tfvars" -auto-approve)
+        dependencies:
+           - Terraform Apply
