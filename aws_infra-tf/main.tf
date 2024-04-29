@@ -478,12 +478,12 @@ resource "aws_glue_crawler" "crawler" {
   depends_on = [aws_glue_catalog_database.aws_glue_db]
 }
 
-resource "null_resource" "start_crawler" {
-  depends_on = [aws_glue_crawler.crawler, aws_instance.ec2_instance]
-  provisioner "local-exec" {
-    command = "aws glue start-crawler --name ${aws_glue_crawler.crawler.name}"
-  }
-}
+# resource "null_resource" "start_crawler" {
+#   depends_on = [aws_glue_crawler.crawler, aws_instance.ec2_instance]
+#   provisioner "local-exec" {
+#     command = "aws glue start-crawler --name ${aws_glue_crawler.crawler.name}"
+#   }
+# }
 
 # Define the Glue Table using the Crawler
 resource "aws_glue_catalog_table" "my_table" {
