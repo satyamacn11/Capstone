@@ -375,7 +375,7 @@ resource "aws_iam_policy_attachment" "attach_policy" {
 
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "new_ec2_profile"
+  name = "ec2_profile-1"
   role = aws_iam_role.my_ec2_role.name
 }
 
@@ -446,7 +446,7 @@ resource "aws_iam_policy_attachment" "s3_full_access_policy_attachment" {
   roles      = [aws_iam_role.glue_crawler_role.name]
 }
 
-# Create an EC2 instance
+#Create an EC2 instance
 resource "aws_instance" "ec2_instance" {
   ami                         = var.ami_id        //"ami-063274182d85cbf14"
   instance_type               = var.instance_type
