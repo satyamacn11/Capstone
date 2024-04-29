@@ -11,4 +11,4 @@
 6. **Table Creation**: Terraform creates a table where the Parquet file is written.
 7. **Querying**: The user can query the data using Athena.
 
-- The project emphasizes secure and best coding practices, testing-driven development, and familiarity with various AWS services. It also requires the use of Git for source code management, Terraform for infrastructure as code, and Jenkins for continuous integration/continuous deployment.
+-The project emphasizes secure and best coding practices, testing-driven development, and familiarity with various AWS services. It also requires the use of Git for source code management, Terraform for infrastructure as code, and Jenkins for continuous integration/continuous deployment.
