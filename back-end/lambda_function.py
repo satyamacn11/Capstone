@@ -16,8 +16,37 @@ s3 = boto3.client('s3')
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(SRC_DYNAMO)
 
+USERNAME = "arya11"
+PASSWORD = "732741"
+
+
+def authentication(event):
+    auth_header = event.get('headers', {}).get('Authorization')
+
+    if auth_header and auth_header.startswith('Basic '):
+        # Extract the base64 encoded username:password pair
+        encoded_credentials = auth_header.split(' ')[1]
+        decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
+        username, password = decoded_credentials.split(':')
+
+        # Perform authentication logic here
+        if username == USERNAME and password == PASSWORD:
+            return True
+        else:
+            return False
+    else:
+        return False
+
 def lambda_handler(event, context):
     # Get the file content from the POST request
+    if not authentication(event):
+        return{
+            'statusCode' : 401,
+            'body' : json.dumps('Unauthorized'),
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            }
+        }
     print(event)
     file_content_base64 = event['body']
     file_content = base64.b64decode(file_content_base64)
