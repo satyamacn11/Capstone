@@ -46,10 +46,8 @@ jobs:
         timeout-minutes: 10
         run: |
           (cd aws_infra-tf && terraform apply -var-file="variables/dev.tfvars" -auto-approve -lock=false)
-        when: manual
 
       - name: Terraform Destroy
         if: always()
         run:  (cd aws_infra-tf && terraform destroy -var-file="variables/dev.tfvars" -auto-approve)
-        when: manual
         
