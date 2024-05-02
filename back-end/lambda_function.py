@@ -29,7 +29,7 @@ def authentication(event):
         decoded_credentials = base64.b64decode(encoded_credentials).decode('utf-8')
         username, password = decoded_credentials.split(':')
 
-        # Perform authentication logic here
+        # Authentication logic
         if username == USERNAME and password == PASSWORD:
             return True
         else:
